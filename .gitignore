@@ -1,0 +1,9 @@
+./Lib/
+./Scripts/
+
+src/__pycache__
+src/.env
+src/.history
+src/.hypothesis/
+src/build/
+src/reports/
