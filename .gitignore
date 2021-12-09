@@ -1,5 +1,4 @@
-./Lib/
-./Scripts/
+Lib/
 
 src/__pycache__
 src/.env
