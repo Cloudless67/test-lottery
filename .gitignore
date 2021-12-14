@@ -1,6 +1,6 @@
 Lib/
+__pycache__
 
-src/__pycache__
 src/.env
 src/.history
 src/.hypothesis/
