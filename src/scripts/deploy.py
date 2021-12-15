@@ -1,12 +1,12 @@
 from brownie import config, network, Lottery, LotteryToken, MockV3Aggregator
-from scripts.utilities import get_account, deploy_mocks
+from scripts.utilities import get_account, deploy_mocks, LOCAL_BLOCKCHAIN_ENVIRONMENT
 
 
 def deploy_lottery():
     current_network = network.show_active()
     account = get_account()
 
-    if current_network != "development":
+    if current_network not in LOCAL_BLOCKCHAIN_ENVIRONMENT:
         price_feed_address = config["networks"][current_network]["eth_usd_price,_feed"]
 
     else:
