@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 contract LotteryToken is ERC721URIStorage {
     uint256 public lotteryCounter;
 
-    constructor() ERC721("LotteryToken", "LOT") {
+    constructor() ERC721("LotteryToken", "LT") {
         lotteryCounter = 0;
     }
 
