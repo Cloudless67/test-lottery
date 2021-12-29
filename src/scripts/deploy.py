@@ -1,6 +1,9 @@
 from brownie import config, network, Lottery, MockV3Aggregator
 from scripts.utilities import get_account, deploy_mocks, LOCAL_BLOCKCHAIN_ENVIRONMENT
 
+LOTTERY_PRICE_IN_WEI = 2 * 10 ** 15
+GAME_PERIOD = 7 * 24 * 60 * 60  # 1 week
+
 
 def deploy_lottery():
     current_network = network.show_active()
@@ -11,21 +14,18 @@ def deploy_lottery():
         link_token = config["networks"][current_network]["link_token"]
         key_hash = config["networks"][current_network]["key_hash"]
         fee = config["networks"][current_network]["fee"]
-        lottery_price_in_wei = config["networks"][current_network][
-            "lottery_price_in_wei"
-        ]
-        game_period = config["networks"][current_network]["game_period"]
 
     else:
-        price_feed_address = deploy_mocks()
+        # price_feed_address = deploy_mocks()
+        pass
 
     lottery = Lottery.deploy(
         vrf_coordinator,
         link_token,
         key_hash,
         fee,
-        lottery_price_in_wei,
-        game_period,
+        LOTTERY_PRICE_IN_WEI,
+        GAME_PERIOD,
         {"from": account},
         publish_source=config["networks"][current_network].get("verify"),
     )
